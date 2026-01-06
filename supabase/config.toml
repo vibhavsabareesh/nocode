@@ -1,0 +1,7 @@
+project_id = "ltgiirmkzzdeuokqxswx"
+
+[functions.ai-tutor]
+verify_jwt = false
+
+[functions.summarize-notes]
+verify_jwt = false

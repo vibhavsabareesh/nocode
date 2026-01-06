@@ -1,0 +1,510 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* NeuroStudy Design System - Calm, Accessible, Adaptive */
+/* This CSS implements VISIBLE changes for different disability modes */
+
+@layer base {
+  :root {
+    /* Core palette - Soft teal with warm neutrals */
+    --background: 180 20% 99%;
+    --foreground: 200 25% 15%;
+
+    --card: 180 15% 98%;
+    --card-foreground: 200 25% 15%;
+
+    --popover: 180 15% 98%;
+    --popover-foreground: 200 25% 15%;
+
+    /* Primary - Calming teal */
+    --primary: 174 58% 39%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Warm cream */
+    --secondary: 40 30% 96%;
+    --secondary-foreground: 200 25% 20%;
+
+    /* Muted - Soft gray */
+    --muted: 180 10% 94%;
+    --muted-foreground: 200 15% 45%;
+
+    /* Accent - Gentle coral for gamification */
+    --accent: 14 80% 65%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Success - Calm green */
+    --success: 152 55% 45%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning - Soft amber */
+    --warning: 38 90% 55%;
+    --warning-foreground: 200 25% 15%;
+
+    /* Destructive */
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders and inputs */
+    --border: 180 15% 88%;
+    --input: 180 15% 88%;
+    --ring: 174 58% 39%;
+
+    --radius: 0.75rem;
+
+    /* Custom NeuroStudy tokens */
+    --focus-glow: 174 58% 60%;
+    --xp-gold: 45 95% 55%;
+    --streak-orange: 25 95% 55%;
+    --badge-purple: 265 60% 60%;
+    
+    /* Spacing for motor-friendly mode */
+    --touch-target-base: 44px;
+    --touch-target-large: 56px;
+    
+    /* Typography scale */
+    --font-size-base: 1rem;
+    --font-size-reading: 1.125rem;
+    --line-height-base: 1.6;
+    --line-height-reading: 2;
+    
+    /* Sidebar tokens */
+    --sidebar-background: 180 15% 97%;
+    --sidebar-foreground: 200 25% 20%;
+    --sidebar-primary: 174 58% 39%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 180 10% 92%;
+    --sidebar-accent-foreground: 200 25% 20%;
+    --sidebar-border: 180 12% 88%;
+    --sidebar-ring: 174 58% 39%;
+  }
+
+  .dark {
+    --background: 200 25% 8%;
+    --foreground: 180 15% 95%;
+
+    --card: 200 25% 10%;
+    --card-foreground: 180 15% 95%;
+
+    --popover: 200 25% 10%;
+    --popover-foreground: 180 15% 95%;
+
+    --primary: 174 55% 50%;
+    --primary-foreground: 200 25% 8%;
+
+    --secondary: 200 20% 15%;
+    --secondary-foreground: 180 15% 90%;
+
+    --muted: 200 20% 15%;
+    --muted-foreground: 180 10% 60%;
+
+    --accent: 14 70% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --success: 152 50% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 85% 50%;
+    --warning-foreground: 200 25% 10%;
+
+    --destructive: 0 55% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 200 20% 20%;
+    --input: 200 20% 20%;
+    --ring: 174 55% 50%;
+
+    --focus-glow: 174 55% 45%;
+    --xp-gold: 45 90% 50%;
+    --streak-orange: 25 90% 50%;
+    --badge-purple: 265 55% 55%;
+
+    --sidebar-background: 200 25% 8%;
+    --sidebar-foreground: 180 15% 90%;
+    --sidebar-primary: 174 55% 50%;
+    --sidebar-primary-foreground: 200 25% 8%;
+    --sidebar-accent: 200 20% 15%;
+    --sidebar-accent-foreground: 180 15% 90%;
+    --sidebar-border: 200 20% 18%;
+    --sidebar-ring: 174 55% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Lexend', system-ui, -apple-system, sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    transition: all 0.3s ease;
+  }
+
+  /* ============================================ */
+  /* DYSLEXIA MODE - DRAMATIC VISUAL CHANGES */
+  /* ============================================ */
+  
+  .dyslexia-mode {
+    /* Use OpenDyslexic-like styling with Lexend (proven dyslexia-friendly) */
+    font-family: 'Lexend', sans-serif !important;
+    letter-spacing: 0.12em !important;
+    word-spacing: 0.3em !important;
+  }
+  
+  .dyslexia-mode * {
+    font-family: 'Lexend', sans-serif !important;
+  }
+  
+  .dyslexia-mode p,
+  .dyslexia-mode li,
+  .dyslexia-mode span,
+  .dyslexia-mode div,
+  .dyslexia-mode h1,
+  .dyslexia-mode h2,
+  .dyslexia-mode h3,
+  .dyslexia-mode h4,
+  .dyslexia-mode label {
+    font-size: 1.2rem !important;
+    line-height: 2.2 !important;
+    letter-spacing: 0.08em !important;
+    word-spacing: 0.2em !important;
+  }
+  
+  .dyslexia-mode h1 {
+    font-size: 2rem !important;
+  }
+  
+  .dyslexia-mode h2 {
+    font-size: 1.6rem !important;
+  }
+  
+  .dyslexia-mode .reading-content {
+    max-width: 600px !important;
+    margin: 0 auto;
+    background: hsl(60 30% 97%);
+    padding: 2rem !important;
+    border-radius: 1rem;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+  }
+  
+  .dyslexia-mode .reading-chunk {
+    margin-bottom: 2rem !important;
+    padding: 1.5rem !important;
+    background: hsl(60 25% 95%) !important;
+    border-left: 4px solid hsl(var(--primary));
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  /* ============================================ */
+  /* SENSORY-SAFE MODE (EPILEPSY + SPS) */
+  /* ============================================ */
+  
+  .sensory-safe {
+    /* Muted, calm color overrides */
+    --background: 200 10% 96%;
+    --foreground: 200 15% 25%;
+    --primary: 200 20% 50%;
+    --accent: 200 15% 60%;
+    --card: 200 8% 94%;
+  }
+  
+  .sensory-safe *,
+  .sensory-safe *::before,
+  .sensory-safe *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    animation: none !important;
+  }
+  
+  .sensory-safe button,
+  .sensory-safe a,
+  .sensory-safe [role="button"] {
+    transform: none !important;
+  }
+  
+  .sensory-safe button:hover,
+  .sensory-safe a:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  
+  /* Remove any potential flashing/pulsing */
+  .sensory-safe .timer-active,
+  .sensory-safe .pulse,
+  .sensory-safe .animate-pulse {
+    animation: none !important;
+  }
+  
+  /* Lower contrast for eye comfort */
+  .sensory-safe {
+    filter: contrast(0.9) saturate(0.7);
+  }
+
+  /* ============================================ */
+  /* ADHD MODE - FOCUS ENHANCING */
+  /* ============================================ */
+  
+  .adhd-mode {
+    /* Slightly higher contrast for focus */
+    --primary: 174 70% 35%;
+  }
+  
+  /* Highlight the current/next action */
+  .adhd-mode .next-action {
+    border: 3px solid hsl(var(--primary)) !important;
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3) !important;
+    background: hsl(var(--primary) / 0.1) !important;
+  }
+  
+  .adhd-mode .quick-start-btn {
+    font-size: 1.3rem !important;
+    padding: 1.5rem 2.5rem !important;
+    animation: pulse-gentle 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-gentle {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4); }
+    50% { box-shadow: 0 0 0 12px hsl(var(--primary) / 0); }
+  }
+  
+  /* Make streaks/XP more visible */
+  .adhd-mode .xp-display {
+    font-size: 1.4rem !important;
+    font-weight: bold !important;
+  }
+
+  /* ============================================ */
+  /* AUTISM MODE - PREDICTABLE LAYOUT */
+  /* ============================================ */
+  
+  .autism-mode {
+    /* No unexpected changes */
+  }
+  
+  .autism-mode .card-interactive:hover {
+    transform: none !important;
+  }
+  
+  .autism-mode * {
+    transition: none !important;
+  }
+
+  /* ============================================ */
+  /* MOTOR-FRIENDLY MODE */
+  /* ============================================ */
+  
+  .motor-friendly button,
+  .motor-friendly a,
+  .motor-friendly [role="button"],
+  .motor-friendly input,
+  .motor-friendly select,
+  .motor-friendly textarea,
+  .motor-friendly .touch-target {
+    min-height: 60px !important;
+    min-width: 60px !important;
+    padding: 1rem 1.5rem !important;
+    font-size: 1.1rem !important;
+  }
+  
+  .motor-friendly .card {
+    padding: 1.5rem !important;
+  }
+  
+  .motor-friendly .gap-2 {
+    gap: 1rem !important;
+  }
+  
+  .motor-friendly .gap-3 {
+    gap: 1.25rem !important;
+  }
+  
+  .motor-friendly .gap-4 {
+    gap: 1.5rem !important;
+  }
+}
+
+@layer utilities {
+  /* Focus states that are visible but not jarring */
+  .focus-visible-ring:focus-visible {
+    @apply outline-none ring-2 ring-offset-2;
+    ring-color: hsl(var(--focus-glow));
+  }
+
+  /* Calm gradient backgrounds */
+  .gradient-calm {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--background)) 0%,
+      hsl(180 20% 96%) 100%
+    );
+  }
+
+  .gradient-card {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--card)) 0%,
+      hsl(180 15% 96%) 100%
+    );
+  }
+
+  .gradient-primary {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary)) 0%,
+      hsl(174 55% 45%) 100%
+    );
+  }
+
+  /* XP and gamification accents */
+  .xp-glow {
+    box-shadow: 0 0 20px hsl(var(--xp-gold) / 0.4);
+  }
+
+  .streak-glow {
+    box-shadow: 0 0 20px hsl(var(--streak-orange) / 0.4);
+  }
+
+  /* Smooth, accessible transitions */
+  .transition-calm {
+    transition: all 0.2s ease-out;
+  }
+
+  /* Card hover states */
+  .card-interactive {
+    @apply transition-calm;
+  }
+
+  .card-interactive:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -8px hsl(var(--primary) / 0.15);
+  }
+
+  .card-interactive:active {
+    transform: translateY(0);
+  }
+
+  /* Timer ring animation */
+  @keyframes timer-pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 8px hsl(var(--primary) / 0);
+    }
+  }
+
+  .timer-active {
+    animation: timer-pulse 2s ease-in-out infinite;
+  }
+
+  /* Energy level indicators */
+  .energy-low {
+    --energy-color: 38 90% 55%;
+  }
+
+  .energy-normal {
+    --energy-color: 174 58% 39%;
+  }
+
+  .energy-high {
+    --energy-color: 152 55% 45%;
+  }
+
+  /* Badge animations (only if motion allowed) */
+  @keyframes badge-earn {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .badge-new {
+    animation: badge-earn 0.5s ease-out;
+  }
+
+  /* Step mode for math - visual grouping */
+  .math-step-box {
+    @apply p-4 rounded-lg border-2 border-dashed;
+    border-color: hsl(var(--primary) / 0.3);
+    background: hsl(var(--primary) / 0.05);
+  }
+
+  /* Micro-step styling */
+  .micro-step {
+    @apply flex items-start gap-3 p-3 rounded-lg transition-calm;
+  }
+
+  .micro-step.current {
+    @apply bg-primary/10 border-l-4 border-primary;
+  }
+
+  .micro-step.completed {
+    @apply opacity-60;
+  }
+
+  /* Focus session overlay */
+  .focus-overlay {
+    @apply fixed inset-0 z-50;
+    background: hsl(var(--background));
+  }
+
+  /* Ending soon banner */
+  .ending-soon-banner {
+    @apply fixed bottom-0 left-0 right-0 p-4 text-center;
+    background: linear-gradient(
+      to top,
+      hsl(var(--warning) / 0.2),
+      transparent
+    );
+  }
+  
+  /* AI Tutor chat bubble */
+  .ai-tutor-bubble {
+    @apply p-4 rounded-2xl;
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+  }
+  
+  .ai-tutor-bubble.user {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-radius: 1rem 1rem 0.25rem 1rem;
+  }
+  
+  .ai-tutor-bubble.assistant {
+    background: hsl(var(--muted));
+    border-radius: 1rem 1rem 1rem 0.25rem;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
